@@ -1,35 +1,32 @@
 <template>
-    <Head title="Reset Password" />
+    <Head title="Register" />
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import { Head } from '@inertiajs/inertia-vue3'
+import { Head, Link } from '@inertiajs/inertia-vue3'
 
 export default defineComponent({
   components: {
-    Head
-  },
-
-  props: {
-    email: String,
-    token: String
+    Head,
+    Link
   },
 
   data () {
     return {
       form: this.$inertia.form({
-        token: this.token,
-        email: this.email,
+        name: '',
+        email: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        terms: false
       })
     }
   },
 
   methods: {
     submit () {
-      this.form.post(this.route('password.update'), {
+      this.form.post(this.route('register'), {
         onFinish: () => this.form.reset('password', 'password_confirmation')
       })
     }

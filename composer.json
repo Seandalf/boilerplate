@@ -29,7 +29,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -50,24 +53,34 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-        "sniff:backend": [
+        "lint:sniff:backend": [
             "vendor\\bin\\php-cs-fixer fix -vvv --dry-run --show-progress=dots"
         ],
-        "lint:backend": [
-            "vendor\\bin\\php-cs-fixer fix -vvv --show-progress=dots"
-        ],
-        "lint:frontend": [
+        "lint:sniff:frontend": [
             "node_modules\\.bin\\eslint --ext .js,.vue resources"
         ],
-        "lint": [
-            "composer lint:backend",
-            "composer lint:frontend"
+        "lint:fix:backend": [
+            "vendor\\bin\\php-cs-fixer fix -vvv --show-progress=dots"
+        ],
+        "lint:fix:frontend": [
+            "node_modules\\.bin\\eslint --fix --ext .js,.vue resources"
+        ],
+        "lint:fix:frontend:dry": [
+            "node_modules\\.bin\\eslint --fix-dry-run --ext .js,.vue resources"
+        ],
+        "lint:sniff": [
+            "composer lint:sniff:backend",
+            "composer lint:sniff:frontend"
+        ],
+        "lint:fix": [
+            "composer lint:fix:backend",
+            "composer lint:fix:frontend"
         ],
         "test": [
             "@php artisan test"
         ],
-        "validate": [
-            "composer lint",
+        "validate:all": [
+            "composer lint:fix",
             "composer test"
         ]
     },
