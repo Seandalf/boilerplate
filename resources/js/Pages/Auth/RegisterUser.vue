@@ -1,5 +1,13 @@
 <template>
     <Head title="Register" />
+
+    <input type="text" v-model="form.email">
+    <input type="text" v-model="form.name">
+    <input type="password" v-model="form.password">
+    <input type="password" v-model="form.password_confirmation">
+    <button @click="submit">
+      Register
+    </button>
 </template>
 
 <script>

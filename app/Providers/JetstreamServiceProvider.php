@@ -38,6 +38,10 @@ class JetstreamServiceProvider extends ServiceProvider
                 'status' => session('status')
             ]);
         });
+
+        Fortify::registerView(function () {
+            return Inertia::render('Auth/RegisterUser');
+        });
     }
 
     /**

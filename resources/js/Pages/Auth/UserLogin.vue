@@ -3,6 +3,10 @@
     <Head title="Log in" />
 
     <input type="text" v-model="form.email">
+    <input type="password" v-model="form.password">
+    <button @click="submit">
+      Login
+    </button>
   </div>
 </template>
 
